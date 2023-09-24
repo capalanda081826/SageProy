@@ -1,0 +1,191 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>SA Álgebra Simbólica</title>
+<meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width,  initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<script type="text/javascript" src="https://sagecell.sagemath.org/static/jquery.min.js">
+</script><script type="text/javascript" src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['\\(','\\)']],
+    },
+    TeX: {
+        extensions: ["extpfeil.js", "autobold.js", "https://aimath.org/mathbook/mathjaxknowl.js", ],
+        // scrolling to fragment identifiers is controlled by other Javascript
+        positionToHash: false,
+        equationNumbers: { autoNumber: "none", },
+        TagSide: "right",
+        TagIndent: ".8em",
+    },
+    // HTML-CSS output Jax to be dropped for MathJax 3.0
+    "HTML-CSS": {
+        scale: 88,
+        mtextFontInherit: true,
+    },
+    CommonHTML: {
+        scale: 88,
+        mtextFontInherit: true,
+    },
+});
+</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML-full"></script><script>$(function () {
+    // Make *any* div with class sagecell-sage an executable Sage cell
+    // Their results will be linked, only within language type
+    sagecell.makeSagecell({inputLocation: 'div.sagecell-sage',
+                           linked: true,
+                           languages: ['sage'],
+                           evalButtonText: 'Evaluar'});
+});
+</script><script>(function() {
+  var cx = '012975021551273728005:y0h32vuqauw';
+  var gcse = document.createElement('script');
+  gcse.type = 'text/javascript';
+  gcse.async = true;
+  gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+  var s = document.getElementsByTagName('script')[0];
+  s.parentNode.insertBefore(gcse, s);
+})();
+</script><link href="https://aimath.org/knowlstyle.css" rel="stylesheet" type="text/css">
+<script xmlns:svg="http://www.w3.org/2000/svg" src="https://pretextbook.org/js/lib/jquery.min.js"></script>
+<script async data-cfasync="false" src="https://cdn.snigelweb.com/adengine/w3schools.com/loader.js" type="text/javascript"></script><script>
+<script type="text/javascript" src="https://aimath.org/knowl.js"></script><script src="https://aimath.org/mathbook/js/lib/jquery.sticky.js">
+</script><script src="https://aimath.org/mathbook/js/lib/jquery.espy.min.js"></script><script src="https://aimath.org/mathbook/js/Mathbook.js">
+</script><link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+<link href="https://aimath.org/mathbook/stylesheets/mathbook-3.css" rel="stylesheet" type="text/css">
+<link href="https://aimath.org/mathbook/mathbook-add-on.css" rel="stylesheet" type="text/css">
+</head>
+  <style>
+    @import url("https://fonts.googleapis.com/css?family=Arial");
+  </style>  
+<body class="mathbook-article has-toc has-sidebar-left">
+<a class="assistive" href="#content">Directo al contenido principal</a><div style="display:none;">\(\require{cancel}\renewcommand{\gcd}{\operatorname{mcd}}
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\)</div>
+<header id="masthead" class="smallbuttons"><div class="banner"><div class="container">
+<h1 class="heading"><a href="https://doc.sagemath.org/html/en/reference/plotting/sage/plot/graphics.html"></a></h1>
+<div class="w3-bar-block">
+<a class="w3-bar-item w3-button ga-tryit" href="https://doc.sagemath.org/html/en/reference/plotting/sage/plot/graphics.html" title="Save" onclick="openMenu();spaceIt.showDialog()">
+<i class="fa fa-save" style="font-size:26px;margin-right:10px;"></i><span style="position:relative;top:-4px;left:2px;">
+REFERENCIA SAGE: GRAPHICS.HTML</span></a></div>
+<a class="w3-bar-item w3-button ga-tryit" href="http://verso.mat.uam.es/~pablo.angulo/doc/laboratorio/b1s1.html"  title="Save" onclick="openMenu();spaceIt.showDialog()">
+<j class="fa fa-save" style="font-size:26px;margin-right:10px;"></j><span style="position:relative;top:-4px;left:2px;">
+EJEMPLO DE TALLER 1</span></a></div>
+    </div>
+<p id="p-1">&#x1F3D9; &nbsp; &nbsp; SAGEMATH. Taller de trabajo, por O. Landaeta<tt class="code-inline tex2jax_ignore"></p>
+<div class ="sagecell-sage" id="sage-1">
+<script type="text/x-sage">
+# INGRESAR CODIGO INDENTADO COMO EN PYTHON
+</script></div>
+<div class ="sagecell-sage" id="sage-2">
+<script type="text/x-sage">
+# INGRESAR CODIGO INDENTADO COMO EN PHYTON
+def grilla2d(x, y, w, colour):
+    grid = Graphics()
+    for i in range(x, y, w):
+        grid += line([(i,x),(i,y)], color=colour)
+        grid += line([(x,i),(y,i)], color=colour)
+    return grid
+def rectangulo(x1, y1, x2, y2, colour ):
+    rectan = line([ (x1, y1), (x2, y1) ], color=colour, thickness=1 )
+    rectan += line([ (x2, y1), (x2, y2) ], color=colour, thickness=1 )
+    rectan += line([ (x2, y2), (x1, y2) ], color=colour, thickness=1 )
+    rectan += line([ (x1, y2), (x1, y1) ], color=colour, thickness=1 )
+    return rectan
+def rotp02d(theta_rot, xp, yp, x0r, y0r): #rotacion de un punto xp, yp  en torno a un punto x0r, y0r
+    cos_rota = cos(theta_rot)
+    sin_rota = sin(theta_rot)
+    xr = x0r + (xp -x0r)*cos_rota - (yp - y0r)*sin_rota
+    yr = y0r + (xp -x0r)*sin_rota + (yp - y0r)*cos_rota
+    return xr, yr
+def centro_espiral(pos, px, py, fib, theta):
+    #theta = 0 #pi/3
+    r = pos % 4
+    if (r==0): #abajo
+        rx = px
+        ry = py - fib
+        angulo1 = pi/2
+        angulo2 = pi
+    if (r==1):
+        rx = px + fib
+        ry = py
+        angulo1 = pi
+        angulo2 = 3*pi/2
+    if (r==2):
+        rx = px
+        ry = py + fib
+        angulo1 = 3*pi/2
+        angulo2 = 2*pi 
+    if (r==3):
+        rx = px -fib
+        ry = py
+        angulo1 = 0
+        angulo2 = pi/2 
+    rx, ry = rotp02d(theta, rx, ry, px, py)
+    angulo1 += theta 
+    angulo2 += theta
+    return r, rx, ry, angulo1, angulo2    
+def dib_espiral( px, py, nveces, colour, rtheta ):
+    #rtheta = -pi
+    fib1 = 0
+    fib2 = 1
+    ca = px
+    cb = py-1
+    ca, cb = rotp02d( rtheta, ca, cb, px, py)
+    m4, ppx, ppy, ang1, ang2 = centro_espiral(2, ca, cb, fib2, rtheta )
+    rec = arc( (ppx, ppy), 1, sector=(ang1, ang2), color=colour, thickness=5 )
+    #rec += line([ (ca, cb), (ppx, ppy) ], color=colour, thickness=3 )
+    ca = px+1
+    cb = py
+    ca, cb = rotp02d( rtheta, ca, cb, px, py)
+    m4, ppx, ppy, ang1, ang2 = centro_espiral(3, ca, cb, fib2, rtheta )
+    rec += arc( (ppx, ppy), 1, sector=(ang1, ang2), color=colour, thickness=3 )
+    #rec += line([ (ca, cb), (ppx, ppy) ], color=colour, thickness=3 )
+    ca = px
+    cb = py
+    ini = 0
+    while (ini<nveces):
+        fib = fib1+fib2
+        m4, ppx, ppy, ang1, ang2 = centro_espiral(ini, ca, cb, fib2, rtheta )
+        rec += arc( (ppx, ppy), fib+fib2, sector=(ang1, ang2), color=colour, thickness=3 )
+        rec += line([ (ca, cb), (ppx, ppy) ], color="black", thickness=1 )
+        #if (m4==0):
+            #print( fib+fib2, "(", -fib-fib2 + ppx, fib+fib2 + ppy ,")", "(", ppx, ppy, ")")
+            #rec += rectangulo(-fib-fib2 + ppx, fib+fib2 + ppy, ppx, ppy, "blue" )
+        #if (m4==1):
+            #print( fib+fib2, "(", -fib-fib2 + ppx, -fib-fib2 + ppy ,")", "(", ppx, ppy, ")")
+            #rec += rectangulo(-fib-fib2 + ppx, -fib-fib2 + ppy, ppx, ppy, "blue" )
+        #if (m4==2):
+            #print( fib+fib2, "(", fib+fib2 + ppx, -fib-fib2 + ppy ,")", "(", ppx, ppy, ")")
+            #rec += rectangulo(fib+fib2 + ppx, -fib-fib2 + ppy, ppx, ppy, "blue" )
+        #if (m4==3):
+            #print( fib+fib2, "(", fib+fib2 + ppx, fib+fib2 + ppy ,")", "(", ppx, ppy, ")")
+            #rec += rectangulo( fib+fib2 + ppx, fib+fib2 + ppy, ppx, ppy, "blue" )
+        fib1 = fib2
+        fib2 = fib
+        ca = ppx
+        cb = ppy
+        ini += 1
+    k=0
+    while (k<3):
+        fib = fib1+fib2
+        m4, ppx, ppy, ang1, ang2 = centro_espiral(ini+k, ca, cb, fib2, rtheta )
+        rec += line([ (ca, cb), (ppx, ppy) ], color="black", thickness=1 )
+        fib1 = fib2
+        fib2 = fib
+        ca = ppx
+        cb = ppy
+        k += 1
+    return rec
+rec1  = dib_espiral( 10, 10, 5, "green", pi/4 )
+rec1 += dib_espiral( 10, 10, 5, "purple", 3*pi/4 )
+rec1 += dib_espiral( 10, 10, 5, "brown", 5*pi/4 )
+rec1 += dib_espiral( 10, 10, 5, "purple", 7*pi/4 )
+show( rec1, axes=false )
+</script></div>
+  </body>
+</html>
